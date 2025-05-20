@@ -16,6 +16,9 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<sonar.organization>diegobotia</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.projectKey>diegobotia_virtualfake</sonar.projectKey>
 	</properties>
 	<dependencies>
 		<dependency>
