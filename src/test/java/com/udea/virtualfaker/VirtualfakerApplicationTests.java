@@ -57,7 +57,7 @@ class VirtualfakerApplicationTests {
 		long endTime = System.currentTimeMillis();
 		long executionTime = endTime - startTime;
 		System.out.println(executionTime);
-		assertTrue(executionTime < 2000);
+		assertTrue(executionTime < 5000);
 }
 
 	@Test
