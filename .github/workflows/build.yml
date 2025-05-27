@@ -107,7 +107,7 @@ jobs:
           #Set artifact name
           name: artifact
           #From this path
-          path: target/virtualfake-0.0.1-SNAPSHOT.jar
+          path: target/virtualfake.jar
 
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
