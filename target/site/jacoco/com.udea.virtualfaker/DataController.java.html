@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">virtualfake</a> &gt; <a href="index.source.html" class="el_package">com.udea.virtualfaker</a> &gt; <span class="el_source">DataController.java</span></div><h1>DataController.java</h1><pre class="source lang-java linenums">package com.udea.virtualfaker;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javafaker.Faker;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Locale;
+
+@RestController
+<span class="fc" id="L12">public class DataController {</span>
+
+    @GetMapping(&quot;/&quot;)
+    public String healthCheck() {
+<span class="fc" id="L16">        return &quot;HEALTH CHECK OK&quot;;</span>
+    }
+
+    @GetMapping(&quot;/version&quot;)
+    public String version() {
+<span class="fc" id="L21">        return &quot;Version is 1.0.0&quot;;</span>
+    }
+
+    @GetMapping(&quot;/nations&quot;)
+    public JsonNode getRandomNations() {
+<span class="fc" id="L26">        var objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L27">        var faker = new Faker(new Locale(&quot;en-US&quot;));</span>
+<span class="fc" id="L28">        var nations = objectMapper.createArrayNode();</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        for(var i=0; i&lt;10; i++){</span>
+<span class="fc" id="L30">            var nation = faker.nation();</span>
+<span class="fc" id="L31">            nations.add(objectMapper.createObjectNode()</span>
+<span class="fc" id="L32">            .put(&quot;nationality&quot;, nation.nationality())</span>
+<span class="fc" id="L33">                    .put(&quot;capitalCity&quot;, nation.capitalCity())</span>
+<span class="fc" id="L34">                    .put(&quot;bandera&quot;, nation.flag())</span>
+<span class="fc" id="L35">                    .put(&quot;language&quot;, nation.language()));</span>
+        }
+<span class="fc" id="L37">        return nations;</span>
+    }
+
+    @GetMapping(&quot;/currencies&quot;)
+    public JsonNode getRandomCurrencies() {
+<span class="fc" id="L42">        var objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L43">        var faker = new Faker(new Locale(&quot;en-US&quot;));</span>
+<span class="fc" id="L44">        var currencies = objectMapper.createArrayNode();</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for(var i=0; i&lt;20; i++){</span>
+<span class="fc" id="L46">            var currency = faker.currency();</span>
+<span class="fc" id="L47">            currencies.add(objectMapper.createObjectNode()</span>
+<span class="fc" id="L48">                    .put(&quot;name&quot;, currency.name())</span>
+<span class="fc" id="L49">                    .put(&quot;code&quot;, currency.code()));</span>
+        }
+<span class="fc" id="L51">        return currencies;</span>
+    }
+
+    @GetMapping(&quot;/aviation&quot;)
+    public JsonNode getRandomAviation() {
+<span class="fc" id="L56">        var objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L57">        var faker = new Faker(new Locale(&quot;en-US&quot;));</span>
+<span class="fc" id="L58">        var aviations = objectMapper.createArrayNode();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        for(var i=0; i&lt;20; i++){</span>
+<span class="fc" id="L60">            var aviation = faker.aviation();</span>
+<span class="fc" id="L61">            aviations.add(objectMapper.createObjectNode()</span>
+<span class="fc" id="L62">                    .put(&quot;aircraft&quot;, aviation.aircraft())</span>
+<span class="fc" id="L63">                    .put(&quot;airport&quot;, aviation.airport())</span>
+<span class="fc" id="L64">                            .put(&quot;METAR&quot;, aviation.METAR())</span>
+                            );
+        }
+<span class="fc" id="L67">        return aviations;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

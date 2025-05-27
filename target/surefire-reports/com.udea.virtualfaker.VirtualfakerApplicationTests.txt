@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.udea.virtualfaker.VirtualfakerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.805 s - in com.udea.virtualfaker.VirtualfakerApplicationTests
